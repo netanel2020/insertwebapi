@@ -24,7 +24,7 @@ namespace insertwebapi.database_access_layer
             com.Parameters.AddWithValue("@PRDCategory", cs.PRDCategory);
             com.Parameters.AddWithValue("@PRDPrice", cs.PRDPrice);
             com.Parameters.AddWithValue("@PRDCost", cs.PRDCost);
-      
+            com.Parameters.AddWithValue("@PRDImage", cs.PRDImage);
             con.Open();
             com.ExecuteNonQuery();
             con.Close();

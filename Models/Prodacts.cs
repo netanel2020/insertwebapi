@@ -14,9 +14,10 @@ namespace insertwebapi.Models
         public string PRDCategory { get; set; }
         public int PRDPrice { get; set; }
         public int PRDCost { get; set; }
+        public string PRDImage { get; set; }
 
-       
-	 
+
+
 
     }
 }

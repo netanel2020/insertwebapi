@@ -156,12 +156,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="database_access_layer\DB.cs" />
+    <Compile Include="database_access_layer\OrdersDB.cs" />
+    <Compile Include="database_access_layer\UsersDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Prodacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
