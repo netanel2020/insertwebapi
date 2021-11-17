@@ -7,8 +7,9 @@ namespace insertwebapi.Models
 {
     public class Users
     {
-        public int USRID { get; set; }
+        //   public int USRID { get; set; }
         public string USRname { get; set; }
+        public string USPass { get; set; }
         public string USRlastName { get; set; }
         public string USRaddres { get; set; }
         public string City { get; set; }

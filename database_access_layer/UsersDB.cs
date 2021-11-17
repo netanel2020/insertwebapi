@@ -17,7 +17,7 @@ namespace insertwebapi.database_access_layer
         {
             SqlCommand com = new SqlCommand("sp_Users_add", con);
             com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@USRID", csUsers.USRID);
+            com.Parameters.AddWithValue("@USPass", csUsers.USPass);
             com.Parameters.AddWithValue("@USRname", csUsers.USRname);
             com.Parameters.AddWithValue("@USRlastName", csUsers.USRlastName);
             com.Parameters.AddWithValue("@USRaddres", csUsers.USRaddres);
