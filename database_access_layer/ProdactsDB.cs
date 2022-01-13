@@ -11,7 +11,7 @@ namespace insertwebapi.database_access_layer
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
         public void addProdacts(Prodacts cs)
         {
-            string n = "N";
+            
             SqlCommand com = new SqlCommand("sp_prodact_add", con);
             com.CommandType = CommandType.StoredProcedure;
           //   com.Parameters.AddWithValue("@PRDID", );

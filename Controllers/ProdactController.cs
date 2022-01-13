@@ -14,15 +14,15 @@ using System.Web.Http.Cors;
 
 namespace insertwebapi.Controllers
 {
-    [EnableCors(origins: "*", headers: " *", methods: "*")]
+    [EnableCors(origins: "http://www.theporto.online", headers: "*", methods: "POST,GET,DELETE",SupportsCredentials = true)]
     public class ProdactController : ApiController
     {
 
 
 
         database_access_layer.ProdactsDB dblayer =new database_access_layer.ProdactsDB();
-        
 
+        string DeleteQuery = "DELETE FROM Prodacts WHERE PRDID=";
         [HttpGet]
         public string Get()
         {
@@ -42,8 +42,30 @@ namespace insertwebapi.Controllers
                 return "no data found";
             }
         }
+        [HttpGet]
+        public string GetSearch(string s)
+        {
+            string query = "select * from Prodacts where PRDname like "+ 'N'+@"'"+ "%" + s +"%"+@"'";
 
-       // GET api/values/5
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+
+            SqlDataAdapter da = new SqlDataAdapter(query, con);
+            DataTable DT = new DataTable();
+            da.Fill(DT);
+            if (DT.Rows.Count > 0)
+            {
+                return JsonConvert.SerializeObject(DT);
+
+            }
+            else
+            {
+                return "no data found";
+            }
+        }
+        //   select* from Prodacts where PRDname like N'%ח%'
+        // GET api/values/5
+        [Authorize]
+       [HttpGet]
         public string Get(int id)
         {
             string query = "select * from Prodacts where PRDID=  ";
@@ -62,10 +84,11 @@ namespace insertwebapi.Controllers
                 return "no data found";
             }
         }
-        
+
 
 
         // POST api/values
+        [Authorize]
         [HttpPost]
         public IHttpActionResult addProdact([FromBody] Prodacts cs)
         {
@@ -85,16 +108,31 @@ namespace insertwebapi.Controllers
           }
 
         }
-/*
-        // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
+        /*
+                // PUT api/values/5
+                public void Put(int id, [FromBody] string value)
+                {
+                }
+         */
         // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
-*/
+        [Authorize]
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+                {
+                    if (id <= 0)
+                        return BadRequest("Not a valid prodact id");
+
+                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+
+                    SqlDataAdapter da = new SqlDataAdapter(DeleteQuery+id, con);
+                    DataTable DT = new DataTable();
+                    da.Fill(DT);
+
+
+
+                    return Ok();
+
+                }
+       
     }
 }

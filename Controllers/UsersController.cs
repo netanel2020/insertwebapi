@@ -15,7 +15,7 @@ using System.Web.Http.Cors;
 namespace insertwebapi.Controllers
 {
 
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class UsersController : ApiController
     {
         database_access_layer.UsersDB dblayer = new database_access_layer.UsersDB();
@@ -27,6 +27,7 @@ namespace insertwebapi.Controllers
 
         string query = "select * from Users  ";
         [HttpGet]
+        [Authorize]
         public string Get()
         {
             // conect into db

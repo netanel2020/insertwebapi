@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Jwt;
 using Microsoft.Owin.Security;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Web.Http.Cors;
 
 
 [assembly: OwinStartup(typeof(insertwebapi.Startup))]
@@ -14,8 +15,10 @@ namespace insertwebapi
 {
     public class Startup
     {
+        
         public void Configuration(IAppBuilder app)
         {
+            
             app.UseJwtBearerAuthentication(
                 new JwtBearerAuthenticationOptions
                 {
@@ -25,8 +28,8 @@ namespace insertwebapi
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "127.0.0.1", //some string, normally web url,  
-                        ValidAudience = "127.0.0.1",
+                        ValidIssuer = "http://localhost:4200", //some string, normally web url,  
+                        ValidAudience = "http://localhost:4200",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my_secret_key_12345"))
                     }
                 });

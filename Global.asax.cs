@@ -11,6 +11,11 @@ namespace insertwebapi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+       // protected void Application_BeginRequest()
+       //{
+       //   HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+          
+       // }
         protected void Application_Start()
         {
            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
@@ -22,4 +27,13 @@ namespace insertwebapi
         }
     }
 }
-//GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter); 
+//GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Fo services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll", p =>
+//    {
+//        p.AllowAnyOrigin()
+//        .AllowAnyHeader()
+//        .AllowAnyMethod()
+//        .AllowCredentials();
+//    });
+//}); rmatters.XmlFormatter); 

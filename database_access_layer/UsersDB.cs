@@ -22,10 +22,11 @@ namespace insertwebapi.database_access_layer
             com.Parameters.AddWithValue("@USRlastName", csUsers.USRlastName);
             com.Parameters.AddWithValue("@USRaddres", csUsers.USRaddres);
             com.Parameters.AddWithValue("@City", csUsers.City);
-            com.Parameters.AddWithValue("@USRTitle", csUsers.USRTitle);
+            com.Parameters.AddWithValue("@USRBusket", csUsers.USRBusket);
+            com.Parameters.AddWithValue("@USRMail", csUsers.USRMail);
             com.Parameters.AddWithValue("@USRPhone", csUsers.USRPhone);
             com.Parameters.AddWithValue("@USRPaymentDeatals", csUsers.USRPaymentDeatals);
-   
+            com.Parameters.AddWithValue("@USRAdmin", csUsers.USRAdmin);
             con.Open();
             com.ExecuteNonQuery();
             con.Close();

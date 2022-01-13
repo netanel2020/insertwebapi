@@ -15,16 +15,18 @@ using System.Security.Claims;
 
 namespace insertwebapi.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class BusketController : ApiController
     {
 
         database_access_layer.BusketDB dblayer = new database_access_layer.BusketDB();
        
-        string query = "select * from Busket where BusketId=";
+        string query = "SELECT * FROM Prodacts FULL OUTER JOIN Busket ON Prodacts.PRDID =Busket.PRDID WHERE Busket.BusketId=";
 
-        string GetQuery = "select * from Busket";
+        string GetQuery = "select * from Busket"; 
+        string DeleteQuery = "DELETE FROM Busket WHERE ItemId=";
         // GET api/<controller>
+        //    [Authorize]
         [HttpGet]
         public string Get(int id)
         {
@@ -44,6 +46,7 @@ namespace insertwebapi.Controllers
             da.Fill(DT);
             if (DT.Rows.Count > 0)
             {
+
                 return JsonConvert.SerializeObject(DT);
 
             }
@@ -104,8 +107,21 @@ namespace insertwebapi.Controllers
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            if (id <= 0)
+                return BadRequest("Not a valid prodact id");
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+
+            SqlDataAdapter da = new SqlDataAdapter(DeleteQuery+id, con);
+            DataTable DT = new DataTable();
+            da.Fill(DT);
+           
+           
+
+            return Ok();
+
         }
     }
 }

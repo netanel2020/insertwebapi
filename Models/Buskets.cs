@@ -9,7 +9,7 @@ namespace insertwebapi.Models
         // public int ORDID { get; set; }
         public int BusketId { get; set; }
         public int PRDID { get; set; }
-        public int DelItem { get; set; }
+        public bool DelItem { get; set; }
         public int Quentity{ get; set; }
 
         /*   [BusketId] INT NULL,
