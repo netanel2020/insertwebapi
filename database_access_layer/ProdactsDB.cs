@@ -1,23 +1,20 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using insertwebapi.Models;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration; 
-using insertwebapi.Models;
 
 
 namespace insertwebapi.database_access_layer
 {
-    public class DB
+    public class ProdactsDB
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
         public void addProdacts(Prodacts cs)
         {
+            string n = "N";
             SqlCommand com = new SqlCommand("sp_prodact_add", con);
             com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@PRDID", cs.PRDID);
+          //   com.Parameters.AddWithValue("@PRDID", );
             com.Parameters.AddWithValue("@PRDname", cs.PRDname);
             com.Parameters.AddWithValue("@PRDAttribute", cs.PRDAttribute);
             com.Parameters.AddWithValue("@PRDTitle", cs.PRDTitle);
@@ -30,6 +27,6 @@ namespace insertwebapi.database_access_layer
             con.Close();
         }
 
-    
+
     }
 }

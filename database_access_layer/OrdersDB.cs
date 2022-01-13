@@ -16,7 +16,7 @@ namespace insertwebapi.database_access_layer
         {
             SqlCommand com = new SqlCommand("sp_Orders_add", con);
             com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@ORDID", csOrders.ORDID);
+            //com.Parameters.AddWithValue("@ORDID", csOrders.ORDID);
             com.Parameters.AddWithValue("@NumberOfProdacts", csOrders.NumberOfProdacts);
             com.Parameters.AddWithValue("@ProdactsNames", csOrders.ProdactsNames);
             com.Parameters.AddWithValue("@ORDAmount", csOrders.ORDAmount);

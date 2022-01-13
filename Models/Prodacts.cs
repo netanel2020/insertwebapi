@@ -7,7 +7,7 @@ namespace insertwebapi.Models
 {
     public class Prodacts
     {
-        public int PRDID { get; set; }
+       // public int PRDID { get; set; }
         public string PRDname { get; set; }
         public string PRDAttribute { get; set; }
         public string PRDTitle { get; set; }

@@ -7,7 +7,7 @@ namespace insertwebapi.Models
 {
     public class Orders
     {
-        public int ORDID { get; set; }
+       // public int ORDID { get; set; }
         public int NumberOfProdacts { get; set; }
         public string ProdactsNames { get; set; }
         public string ORDAmount { get; set; }
