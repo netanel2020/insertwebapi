@@ -15,29 +15,24 @@ using System.Security.Claims;
 
 namespace insertwebapi.Controllers
 {
-    [EnableCors(origins: "http://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
+    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class BusketController : ApiController
     {
 
         database_access_layer.BusketDB dblayer = new database_access_layer.BusketDB();
        
         string query = "SELECT * FROM Prodacts FULL OUTER JOIN Busket ON Prodacts.PRDID =Busket.PRDID WHERE Busket.BusketId=";
+        string UpdateBusID = "update busket set BusketId = ";
+          string UpdateBusID2= " where BusketId =";
 
         string GetQuery = "select * from Busket"; 
         string DeleteQuery = "DELETE FROM Busket WHERE ItemId=";
-        // GET api/<controller>
-        //    [Authorize]
+     
+     
         [HttpGet]
         public string Get(int id)
         {
-           /* if (User.Identity.IsAuthenticated)
-            {
-                var identity = User.Identity as ClaimsIdentity;
-                if (identity != null)
-                {
-                    IEnumerable<Claim> claims = identity.Claims;
-                }
-                */
+           
           
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
 
@@ -53,12 +48,7 @@ namespace insertwebapi.Controllers
             else
             {
                 return "no data found";
-            } /*
-            }
-            else
-            {
-                return "Invalid";
-            }*/
+            } 
         }
 
         // GET api/<controller>
@@ -101,10 +91,23 @@ namespace insertwebapi.Controllers
 
             }
         }
-            // PUT api/<controller>/5
-            public void Put(int id, [FromBody] string value)
+        // PUT api/<controller>/5
+        [Authorize]
+        [HttpPut]
+        public IHttpActionResult updateBusID(int id, int TempBusID)
         {
+            if (id <= 0)
+                return BadRequest("Not a valid prodact id");//|| operand not work with int here
+            if (TempBusID <= 0)
+                return BadRequest("Not a valid prodact id");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+
+            SqlDataAdapter da = new SqlDataAdapter(UpdateBusID + TempBusID + UpdateBusID2 + id , con);
+            DataTable DT = new DataTable();
+            da.Fill(DT);
+            return Ok();
         }
+
 
         // DELETE api/<controller>/5
         public IHttpActionResult Delete(int id)

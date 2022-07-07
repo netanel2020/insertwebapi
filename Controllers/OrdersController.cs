@@ -15,7 +15,7 @@ using System.Web.Http.Cors;
 namespace insertwebapi.Controllers
 {
 
-    [EnableCors(origins: "http://www.theporto.online ", headers: "*", methods: "*")]
+    [EnableCors(origins: "https://www.theporto.online ", headers: "*", methods: "*")]
     public class OrdersController : ApiController
     {
         database_access_layer.OrdersDB dblayer = new database_access_layer.OrdersDB();

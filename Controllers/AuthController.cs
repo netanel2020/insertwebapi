@@ -19,7 +19,7 @@ using System.Web.Http.Cors;
 namespace insertwebapi.Controllers
 {
     
-    [EnableCors(origins: "http://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
+    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class AuthController : ApiController
     {
         database_access_layer.UsersDB dblayer = new database_access_layer.UsersDB();
@@ -49,7 +49,7 @@ namespace insertwebapi.Controllers
                 string key = "my_secret_key_12345";
                 string USRIDfromDB = DT.Rows[0]["USRID"].ToString();
                 
-              var issuer = "http://localhost:4200";  //normally this will be your site URL    
+              var issuer = "https://www.theporto.online";  //normally this will be your site URL    
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -60,7 +60,7 @@ namespace insertwebapi.Controllers
             permClaims.Add(new Claim("name", DT.Rows[0]["USRName"].ToString()));
                 permClaims.Add(new Claim("userid", USRIDfromDB)); 
                 permClaims.Add(new Claim("busketID", USRIDfromDB));
-                permClaims.Add(new Claim("admin", DT.Rows[0]["USRAdmin"].ToString()));
+                permClaims.Add(new Claim("admin", DT.Rows[0]["Admin"].ToString()));
                 //Create Security Token object by giving required parameters    {{"alg":"HS256","typ":"JWT"}.{"jti":"90e58fd3-7740-452a-888b-f97620556425","valid":"1","name":"'0500000000'","USRID":"1023","exp":1637057148,"iss":"127.0.0.1","aud":"127.0.0.1"}}
                 var token = new JwtSecurityToken(issuer, //Issure    
                             issuer,  //Audience    

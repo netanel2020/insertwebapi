@@ -14,14 +14,14 @@ using System.Web.Http.Cors;
 
 namespace insertwebapi.Controllers
 {
-    [EnableCors(origins: "http://www.theporto.online", headers: "*", methods: "POST,GET,DELETE",SupportsCredentials = true)]
+    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class ProdactController : ApiController
     {
 
 
 
         database_access_layer.ProdactsDB dblayer =new database_access_layer.ProdactsDB();
-
+        string deletebusket = "delete  from busket where PRDID =";
         string DeleteQuery = "DELETE FROM Prodacts WHERE PRDID=";
         [HttpGet]
         public string Get()
@@ -124,7 +124,7 @@ namespace insertwebapi.Controllers
 
                     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
 
-                    SqlDataAdapter da = new SqlDataAdapter(DeleteQuery+id, con);
+                    SqlDataAdapter da = new SqlDataAdapter(deletebusket+id+ DeleteQuery+id, con);
                     DataTable DT = new DataTable();
                     da.Fill(DT);
 

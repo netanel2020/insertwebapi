@@ -15,9 +15,10 @@ namespace insertwebapi.Models
         public string City { get; set; }
         public string USRMail { get; set; }
         public string USRPhone { get; set; }
-        public string USRPaymentDeatals { get; set; }
-        public int USRBusket { get; set; }
-        public bool USRAdmin { get; set; }
+        public bool Admin { get; set; }
+        // public string USRPaymentDeatals { get; set; }
+        // public int USRBusket { get; set; }
+        // public bool USRAdmin { get; set; }
 
     }
 
