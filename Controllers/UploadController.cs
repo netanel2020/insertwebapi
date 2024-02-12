@@ -16,7 +16,7 @@ using System.IO;
 
 namespace insertwebapi.Controllers
 {
-    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
+    [EnableCors(origins: "https://www.theprotest.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class UploadController : ApiController
     {
         database_access_layer.ProdactsDB dblayer = new database_access_layer.ProdactsDB();

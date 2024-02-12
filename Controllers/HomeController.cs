@@ -7,7 +7,7 @@ using System.Web.Http.Cors;
 namespace insertwebapi.Controllers
 {
 
-    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*")]
+    [EnableCors(origins: "https://www.theprotest.online", headers: "*", methods: "*")]
     public class HomeController : Controller
     {
         public ActionResult Index()

@@ -19,7 +19,7 @@ using System.Web.Http.Cors;
 namespace insertwebapi.Controllers
 {
     
-    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
+    [EnableCors(origins: "https://www.theprotest.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class AuthController : ApiController
     {
         database_access_layer.UsersDB dblayer = new database_access_layer.UsersDB();
@@ -49,7 +49,7 @@ namespace insertwebapi.Controllers
                 string key = "my_secret_key_12345";
                 string USRIDfromDB = DT.Rows[0]["USRID"].ToString();
                 
-              var issuer = "https://www.theporto.online";  //normally this will be your site URL    
+              var issuer = "https://www.theprotest.online";  //normally this will be your site URL    
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 

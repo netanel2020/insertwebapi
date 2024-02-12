@@ -14,7 +14,7 @@ using System.Web.Http.Cors;
 
 namespace insertwebapi.Controllers
 {
-    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
+    [EnableCors(origins: "https://www.theprotest.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class ProdactController : ApiController
     {
 

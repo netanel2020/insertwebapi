@@ -15,7 +15,7 @@ using System.Security.Claims;
 
 namespace insertwebapi.Controllers
 {
-    [EnableCors(origins: "https://www.theporto.online", headers: "*", methods: "*", SupportsCredentials = true)]
+    [EnableCors(origins: "https://www.theprotest.online", headers: "*", methods: "*", SupportsCredentials = true)]
     public class BusketController : ApiController
     {
 
